@@ -1,5 +1,5 @@
 <?php
-define("BASE","/projeto_lpbcc/");
+define("BASE","/projeto-lpbcc/");
 define("UNSET_COUNT", 1);
 
 define("DBNAME", "biblioteca");
