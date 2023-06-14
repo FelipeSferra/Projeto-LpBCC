@@ -1,14 +1,13 @@
 {
     "name": "felipe/projeto_lpbcc",
-    "autoload": {
-        "psr-4": {
-            "Felipe\\CursoMvc\\": "src/"
-        }
-    },
     "authors": [
         {
             "name": "Felipe Sferra",
             "email": "felipesferra@gmail.com"
+        },
+        {
+            "name": "Lucas Cunha",
+            "email": "lucascunhafelicio@hotmail.com"
         }
     ],
     "require": {
