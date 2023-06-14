@@ -5,6 +5,6 @@
 
     use app\core\Router;
 
-    (new Router());
+    echo "teste";
 
  

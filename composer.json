@@ -11,7 +11,9 @@
             "email": "felipesferra@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "twig/twig": "3.6.1"
+    },
     "autoload": {
         "psr-4": {
             "app\\" : "app/"
