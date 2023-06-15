@@ -3,5 +3,5 @@
 {% block title %} Teste {% endblock %}
 
 {% block body %}
-<h1>TESTE</h1>
+<h1>Home</h1>
 {% endblock %}
