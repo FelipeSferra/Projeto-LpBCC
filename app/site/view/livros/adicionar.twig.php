@@ -16,9 +16,9 @@
             <label for="slStatus">Status</label>
             <select id="slStatus" name="slStatus" class="form-select">
                 <option selected>Selecione...</option>
-                <option value="">Disponível</option>
-                <option value="">Emprestado</option>
-                <option value="">Atrasado</option>
+                <option value="1">Disponível</option>
+                <option value="2">Emprestado</option>
+                <option value="3">Atrasado</option>
             </select>
         </div>
         <div class="col-md-3 mt-3">
@@ -56,8 +56,8 @@
             <div class="alert alert-info col-md-6">Preencha todos os campos corretamente</div>
         </div>
         <div class="text-end">
-            <a href="{{BASE}}livros/" class="btn btn-danger me-md-2" role="button">Cancelar</a>
-            <input type="submit" value="Adicionar" class="btn btn-success me-md-2">
+            <a href="{{BASE}}generos/" class="btn btn-danger me-md-2" role="button"><i class="fa-solid fa-xmark"></i>Cancelar</a>
+            <button type="submit" class="btn btn-success me-md-2"><i class="fa-solid fa-check"></i>Adicionar</button>
         </div>
     </div>
 </form>

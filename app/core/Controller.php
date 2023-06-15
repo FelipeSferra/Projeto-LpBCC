@@ -12,4 +12,13 @@ class Controller {
 
         echo $twig->render($view . ".twig.php", $params);
     }
+
+    protected function showMessage(string $title, string $message, string $uri, int $httpCode = 200){
+        http_response_code($httpCode);
+        $this->load("partials/mensagem",[
+            "title" => $title,
+            "message" => $message,
+            "link" => $uri
+        ]);
+    }
 }

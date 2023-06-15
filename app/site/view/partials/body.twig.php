@@ -8,13 +8,15 @@
     <!-- <link rel="shortcut icon" href="{{BASE}}img/favicon.ico" type="image/x-icon"> -->
     <link rel="stylesheet" href="{{BASE}}css/bootstrap.min.css">
     <link rel="stylesheet" href="{{BASE}}css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
     <title>{% block title %}{% endblock %}</title>
 
     {% block head %}{% endblock %}
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
         <div class="max-width">
             <div class="collapse navbar-collapse" id="navbarColor03">
                 <ul class="navbar-nav me-auto">

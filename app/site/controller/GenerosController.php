@@ -17,15 +17,18 @@ class GenerosController extends Controller {
         $this->load("generos/adicionar");
     }
 
-    public function editar(){
-
+    public function editar() {
     }
 
-    public function inserir(){
-        $genero = filter_input(INPUT_POST, "txtGen");
-        $genero = htmlspecialchars($genero, ENT_QUOTES);
+    public function inserir() {
+        $genero = filter_input(INPUT_POST, "txtGen",FILTER_SANITIZE_STRING);
 
-        if(strlen($genero) < 2 || strlen($genero) > 45){
+        if (strlen($genero) < 2) {
+            $this->showMessage(
+                "Formulário Inválido",
+                "Os dados fornecidos estão incompletos ou são inválidos!",
+                "generos/adicionar"
+            );
             return;
         }
     }
