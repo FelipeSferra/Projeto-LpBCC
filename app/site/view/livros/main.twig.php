@@ -12,6 +12,7 @@
 <div class="overflow-auto">
     <table class="table table-dark table-striped">
         <tr>
+            <th>#ID</th>
             <th>Titulo</th>
             <th>Slug</th>
             <th>Status</th>

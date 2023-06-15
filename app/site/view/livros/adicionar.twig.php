@@ -52,6 +52,9 @@
     </div>
 
     <div class="row mt-4">
+        <div id="dvAlert">
+            <div class="alert alert-info col-md-6">Preencha todos os campos corretamente</div>
+        </div>
         <div class="text-end">
             <a href="{{BASE}}livros/" class="btn btn-danger me-md-2" role="button">Cancelar</a>
             <input type="submit" value="Adicionar" class="btn btn-success me-md-2">
