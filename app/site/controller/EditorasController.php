@@ -30,7 +30,7 @@ class EditorasController extends Controller {
             $this->showMessage(
                 "Formulário Inválido",
                 "Os dados fornecidos estão incompletos ou são inválidos!",
-                "editoras/editar" . $editoraId
+                "editoras/"
             );
             return;
         }
@@ -41,7 +41,7 @@ class EditorasController extends Controller {
             $this->showMessage(
                 "Editora não encontrada",
                 "Os dados fornecidos estão incompletos ou são inválidos!",
-                "editoras/editar" . $editoraId
+                "editoras/"
             );
             return;
         }
@@ -86,7 +86,7 @@ class EditorasController extends Controller {
             $this->showMessage(
                 "Formulário Inválido",
                 "Os dados fornecidos estão incompletos ou são inválidos!",
-                "editoras/editar" . $editoraId
+                "editoras/"
             );
             return;
         }
@@ -95,7 +95,7 @@ class EditorasController extends Controller {
             $this->showMessage(
                 "Erro",
                 "Houve um erro ao tentar alterar, tente novamente mais tarde!",
-                "editoras/editar" . $editoraId
+                "editoras/"
             );
             return;
         }

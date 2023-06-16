@@ -4,7 +4,7 @@ function validar(validateId){
     
     var valid = true;
 
-    if(getValueById("txtEdt").length < 2){
+    if(getValueById("txtEdt").length < 3){
         appendHTMLById("dvAlert","<div class='alert alert-warning col-md-6'>Editora inválida. Mínimo 3 caracteres!</div>");
         valid = false;
     }

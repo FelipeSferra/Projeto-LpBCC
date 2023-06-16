@@ -30,7 +30,7 @@ class GenerosController extends Controller {
             $this->showMessage(
                 "Formulário Inválido",
                 "Os dados fornecidos estão incompletos ou são inválidos!",
-                "generos/editar" . $generoId
+                "generos/"
             );
             return;
         }
@@ -41,7 +41,7 @@ class GenerosController extends Controller {
             $this->showMessage(
                 "Gênero não encontrado",
                 "Os dados fornecidos estão incompletos ou são inválidos!",
-                "generos/editar" . $generoId
+                "generos/"
             );
             return;
         }
@@ -86,7 +86,7 @@ class GenerosController extends Controller {
             $this->showMessage(
                 "Formulário Inválido",
                 "Os dados fornecidos estão incompletos ou são inválidos!",
-                "generos/editar" . $generoId
+                "generos/"
             );
             return;
         }
@@ -95,7 +95,7 @@ class GenerosController extends Controller {
             $this->showMessage(
                 "Erro",
                 "Houve um erro ao tentar alterar, tente novamente mais tarde!",
-                "generos/editar" . $generoId
+                "generos/"
             );
             return;
         }

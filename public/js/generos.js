@@ -4,7 +4,7 @@ function validar(validateId){
     
     var valid = true;
 
-    if(getValueById("txtGen").length < 2){
+    if(getValueById("txtGen").length < 3){
         appendHTMLById("dvAlert","<div class='alert alert-warning col-md-6'>Gênero inválido. Mínimo 3 caracteres!</div>");
         valid = false;
     }
