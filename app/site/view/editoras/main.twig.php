@@ -3,18 +3,35 @@
 {% block title %} Editoras - Projeto {% endblock %}
 
 {% block body %}
-<br><h1>Editoras</h1>
+<br>
+<h1>Editoras</h1>
 
-<a href="{{BASE}}editoras/adicionar/" class="btn btn-outline-dark ">Nova editora</a>
+<a href="{{BASE}}editoras/adicionar/" class="btn btn-outline-dark "><i class="fa-solid fa-plus"></i> Nova editora</a>
 
 <hr>
 
 <div class="overflow-auto">
-    <table class="table table-dark table-striped">
-        <tr>
-            <th>#ID</th>
-            <th>Editora</th>
-        </tr>
+    <table class="table table-light table-striped table-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>#ID</th>
+                <th>Editora</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for editora in listaEditora %}
+            <tr>
+                <td>{{editora.id}}</td>
+                <td>{{editora.nome}}</td>
+                <td>
+                    <div class="text-end">
+                        <a href="{{BASE}}editoras/editar/{{editora.id}}" class="btn btn-warning btn-sm"><i class="fa-solid fa-pen-to-square"></i> Editar</a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
 </div>
 

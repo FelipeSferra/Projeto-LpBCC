@@ -2,7 +2,7 @@
 define("BASE","/projeto-lpbcc/");
 define("UNSET_COUNT", 1);
 
-define("DBNAME", "biblioteca");
-define("DBHOST","localhost");
-define("DBUSER","root");
-define("DBPASS","");
+define("DB_NAME", "biblioteca");
+define("DB_HOST","localhost");
+define("DB_USER","root");
+define("DB_PASS","");
