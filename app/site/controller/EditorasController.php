@@ -75,7 +75,7 @@ class EditorasController extends Controller {
     //----------------------------------------------------//
 
     public function inserir() {
-        $editora = filter_input(INPUT_POST, "txtEdt", FILTER_SANITIZE_STRING);
+        $editora = filter_input(INPUT_POST, "txtEdt", FILTER_UNSAFE_RAW);
 
         if (strlen($editora) < 2) {
             $this->showMessage(
@@ -100,7 +100,7 @@ class EditorasController extends Controller {
 
     public function alterar($editoraId = 0) {
         $editoraId = filter_var($editoraId, FILTER_SANITIZE_NUMBER_INT);
-        $editora = filter_input(INPUT_POST, "txtEdt", FILTER_SANITIZE_STRING);
+        $editora = filter_input(INPUT_POST, "txtEdt", FILTER_UNSAFE_RAW);
 
         if ($editoraId <= 0 || strlen($editora) < 2) {
             $this->showMessage(

@@ -75,7 +75,7 @@ class AutoresController extends Controller {
     //----------------------------------------------------//
 
     public function inserir() {
-        $autor = filter_input(INPUT_POST, "txtAut", FILTER_SANITIZE_STRING);
+        $autor = filter_input(INPUT_POST, "txtAut", FILTER_UNSAFE_RAW);
 
         if (strlen($autor) < 2) {
             $this->showMessage(
@@ -102,7 +102,7 @@ class AutoresController extends Controller {
 
     public function alterar($autorId = 0) {
         $autorId = filter_var($autorId, FILTER_SANITIZE_NUMBER_INT);
-        $autor = filter_input(INPUT_POST, "txtAut", FILTER_SANITIZE_STRING);
+        $autor = filter_input(INPUT_POST, "txtAut", FILTER_UNSAFE_RAW);
 
         if ($autorId <= 0 || strlen($autor) < 2) {
             $this->showMessage(

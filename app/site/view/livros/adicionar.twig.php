@@ -18,9 +18,9 @@
             <label for="slStatus">Status</label>
             <select id="slStatus" name="slStatus" class="form-select">
                 <option selected>Selecione...</option>
-                <option value="0">Disponível</option>
-                <option value="1">Emprestado</option>
-                <option value="2">Atrasado</option>
+                <option value="disponivel">Disponível</option>
+                <option value="emprestado">Emprestado</option>
+                <option value="atrasado">Atrasado</option>
             </select>
         </div>
         <div class="col-md-3 mt-3">
@@ -56,6 +56,20 @@
                 <option value="{{autor.id}}">{{autor.nome}}</option>
                 {% endfor %}
             </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 mt-3">
+            <label for="txtThumb">Thumbnail</label>
+            <input type="text" id="txtThumb" name="txtThumb" class="form-control" placeholder="Thumbnail aqui">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 mt-3">
+            <label for="txtSinopse">Sinopse</label>
+            <textarea class="form-control" id="txtSinopse" name="txtSinopse" rows=3 placeholder="Sinopse aqui"></textarea>
         </div>
     </div>
 

@@ -21,4 +21,10 @@ class Controller {
             "link" => $uri
         ]);
     }
+
+    protected function createSlug(string $titulo){
+        $slug = new \Cocur\Slugify\Slugify();
+
+        return $slug->slugify($titulo);
+    }
 }

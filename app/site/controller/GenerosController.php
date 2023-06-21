@@ -75,7 +75,7 @@ class GenerosController extends Controller {
     //----------------------------------------------------//
 
     public function inserir() {
-        $genero = filter_input(INPUT_POST, "txtGen", FILTER_SANITIZE_STRING);
+        $genero = filter_input(INPUT_POST, "txtGen", FILTER_UNSAFE_RAW);
 
         if (strlen($genero) < 2) {
             $this->showMessage(
@@ -100,7 +100,7 @@ class GenerosController extends Controller {
 
     public function alterar($generoId = 0) {
         $generoId = filter_var($generoId, FILTER_SANITIZE_NUMBER_INT);
-        $genero = filter_input(INPUT_POST, "txtGen", FILTER_SANITIZE_STRING);
+        $genero = filter_input(INPUT_POST, "txtGen", FILTER_UNSAFE_RAW);
 
         if ($generoId <= 0 || strlen($genero) < 2) {
             $this->showMessage(

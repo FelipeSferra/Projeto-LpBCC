@@ -40,7 +40,7 @@ class AutorModel {
     }
 
     public function readById(int $autorId) {
-        $sql = "SELECT * FROM autor WHERE id = :id";
+        $sql = "SELECT * FROM autor WHERE id = :id AND D_E_L_E_T_E IS NULL";
 
         $dr = $this->pdo->executeQueryOneRow($sql, [":id" => $autorId]);
 

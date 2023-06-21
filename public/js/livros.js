@@ -9,7 +9,7 @@ function validar(validateId){
         valid = false;
     }
 
-    if(getValueById("slStatus") < 0 || getValueById("slStatus") > 2){
+    if(getValueById("slStatus").length < 3){
         appendHTMLById("dvAlert","<div class='alert alert-warning col-md-6'>Status inválido. Escolha uma opção válida!</div>");
         valid = false;
     }
@@ -31,6 +31,16 @@ function validar(validateId){
 
     if(getValueById("slAutor") <= 0){
         appendHTMLById("dvAlert","<div class='alert alert-warning col-md-6'>Autor inválido.</div>");
+        valid = false;
+    }
+
+    if(getValueById("txtThumb").length < 3){
+        appendHTMLById("dvAlert","<div class='alert alert-warning col-md-6'>Thumbnail inválida.</div>");
+        valid = false;
+    }
+
+    if(getValueById("txtSinopse").length < 10){
+        appendHTMLById("dvAlert","<div class='alert alert-warning col-md-6'>Sinopse inválida. Mínimo 10 caracteres!</div>");
         valid = false;
     }
 

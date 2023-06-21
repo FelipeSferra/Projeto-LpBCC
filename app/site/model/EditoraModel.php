@@ -40,7 +40,7 @@ class EditoraModel {
     }
 
     public function readById(int $editoraId) {
-        $sql = "SELECT * FROM editora WHERE id = :id";
+        $sql = "SELECT * FROM editora WHERE id = :id AND D_E_L_E_T_E IS NULL";
 
         $dr = $this->pdo->executeQueryOneRow($sql, [":id" => $editoraId]);
 

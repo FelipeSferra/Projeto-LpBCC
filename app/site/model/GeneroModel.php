@@ -40,7 +40,7 @@ class GeneroModel {
     }
 
     public function readById(int $generoId) {
-        $sql = "SELECT * FROM genero WHERE id = :id";
+        $sql = "SELECT * FROM genero WHERE id = :id AND D_E_L_E_T_E IS NULL";
 
         $dr = $this->pdo->executeQueryOneRow($sql, [":id" => $generoId]);
 

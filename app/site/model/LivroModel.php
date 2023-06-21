@@ -3,6 +3,7 @@
 namespace app\site\model;
 
 use app\core\Model;
+use app\site\entities\Livro;
 
 class LivroModel {
     private $pdo;
@@ -11,20 +12,87 @@ class LivroModel {
         $this->pdo = new Model();
     }
 
-    public function insert(string $titulo, string $slug, int $status, int $qtde, int $generoId, int $autorId, int $editoraId) {
-        $sql = "INSERT INTO livro (TITULO,SLUG,STATUS,QTDE,GENERO_ID,AUTOR_ID,EDITORA_ID) ";
-        $sql .= " VALUES (:titulo, :slug, :status, :qtde, :generoId, :autorId, :editoraId)";
+    public function insert(Livro $livro) {
+        $sql = "INSERT INTO livro (TITULO,SLUG,SINOPSE,THUMB,STATUS,QTDE,GENERO_ID,AUTOR_ID,EDITORA_ID) ";
+        $sql .= " VALUES (:titulo, :slug, :sinopse, :thumb, :status, :qtde, :generoId, :autorId, :editoraId)";
         $params = [
-            ":titulo" => $titulo,
-            ":slug" => $slug, 
-            ":status" => $status, 
-            ":qtde" => $qtde,
-            ":generoId" => $generoId,
-            ":autorId" => $autorId,
-            ":editoraId" => $editoraId
-            
+            ":titulo" => $livro->getTitulo(),
+            ":slug" => $livro->getSlug(),
+            ":sinopse" => $livro->getSinopse(),
+            ":thumb" => $livro->getThumb(),
+            ":status" => $livro->getStatus(),
+            ":qtde" => $livro->getQtde(),
+            ":generoId" => $livro->getGeneroId(),
+            ":autorId" => $livro->getAutorId(),
+            ":editoraId" => $livro->getEditoraId()
+        ];
+
+        if (!$this->pdo->executeNonQuery($sql, $params))
+            return -1;
+        return $this->pdo->getLastID();
+    }
+
+    public function update(Livro $livro) {
+        $sql = "UPDATE livro SET titulo = :titulo, slug = :slug, sinopse = :sinopse, thumb = :thumb, status = :status, qtde = :qtde, genero_id = :generoId, ";
+        $sql .= " autor_id = :autorId, editora_id = :editoraId WHERE id = :id";
+        $params = [
+            ":id" => $livro->getId(),
+            ":titulo" => $livro->getTitulo(),
+            ":slug" => $livro->getSlug(),
+            ":sinopse" => $livro->getSinopse(),
+            ":thumb" => $livro->getThumb(),
+            ":status" => $livro->getStatus(),
+            ":qtde" => $livro->getQtde(),
+            ":generoId" => $livro->getGeneroId(),
+            ":autorId" => $livro->getAutorId(),
+            ":editoraId" => $livro->getEditoraId()
         ];
 
         return $this->pdo->executeNonQuery($sql, $params);
+    }
+
+    public function readById(int $livroId) {
+        $sql = "SELECT * FROM livro WHERE id = :id AND D_E_L_E_T_E IS NULL";
+
+        $dr = $this->pdo->executeQueryOneRow($sql, [
+            ":id" => $livroId
+        ]);
+
+        return $this->collection($dr);
+    }
+
+    public function readAllByGenre(int $generoId) {
+        $sql = "SELECT l.*, g.descricao as genDesc FROM livro l INNER JOIN genero ON g.id = l.genero_id WHERE l.genero_id = :generoId AND D_E_L_E_T_E IS NULL";
+
+        $dt = $this->pdo->executeQuery($sql, [
+            ":generoId" => $generoId
+        ]);
+
+        $lista = [];
+
+        foreach($dt as $dr){
+            $lista[] = $this->collection($dr);
+        }
+
+        return $lista;
+    }
+
+    private function collection($arr) {
+        $livro = new Livro();
+        $livro->setId($arr["ID"] ?? null);
+        $livro->setTitulo($arr["TITULO"] ?? null);
+        $livro->setSlug($arr["SLUG"] ?? null);
+        $livro->setSinopse($arr["SINOPSE"] ?? null);
+        $livro->setThumb($arr["THUMB"] ?? null);
+        $livro->setStatus($arr["STATUS"] ?? null);
+        $livro->setQtde($arr["QTDE"] ?? null);
+        $livro->setGeneroId($arr["GENERO_ID"] ?? null);
+        $livro->setGenero($arr["genDesc"] ?? null);
+        $livro->setAutorId($arr["AUTOR_ID"] ?? null);
+        $livro->setAutor($arr["autorNome"] ?? null);
+        $livro->setEditoraId($arr["EDITORA_ID"] ?? null);
+        $livro->setEditora($arr["editoraNome"] ?? null);
+
+        return $livro;
     }
 }
