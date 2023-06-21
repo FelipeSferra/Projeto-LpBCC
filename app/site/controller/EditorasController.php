@@ -52,6 +52,26 @@ class EditorasController extends Controller {
         ]);
     }
 
+    public function visualizar($editoraId = 0){
+        $editoraId = filter_var($editoraId, FILTER_SANITIZE_NUMBER_INT);
+
+        $editora = $this->editoraModel->readById($editoraId);
+
+        if ($editora->nome == null) {
+            $this->showMessage(
+                "Editora não encontrada",
+                "Os dados fornecidos estão incompletos ou são inválidos!",
+                "editoras/"
+            );
+            return;
+        }
+
+        $this->load("editoras/visualizar", [
+            "editora" => $editora,
+            "editoraId" => $editoraId
+        ]);
+    }
+
     //----------------------------------------------------//
 
     public function inserir() {
@@ -92,6 +112,21 @@ class EditorasController extends Controller {
         }
 
         if (!$this->editoraModel->update($editoraId, $editora)) {
+            $this->showMessage(
+                "Erro",
+                "Houve um erro ao tentar alterar, tente novamente mais tarde!",
+                "editoras/"
+            );
+            return;
+        }
+
+        redirect(BASE . "editoras/");
+    }
+
+    public function excluir($editoraId){
+        $editoraId = filter_var($editoraId, FILTER_SANITIZE_NUMBER_INT);
+
+        if (!$this->editoraModel->delete($editoraId)) {
             $this->showMessage(
                 "Erro",
                 "Houve um erro ao tentar alterar, tente novamente mais tarde!",

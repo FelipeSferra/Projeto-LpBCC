@@ -4,9 +4,16 @@
 
 {% block body %}
 <br>
-<h1>Gêneros</h1>
-
-<a href="{{BASE}}generos/adicionar/" class="btn btn-outline-dark "><i class="fa-solid fa-plus"></i> Novo gênero</a>
+<div class="row">
+    <div class="col-md-6">
+        <h1>Gêneros</h1>
+    </div>
+    <div class="col-md-6">
+        <div class="text-end">
+            <a href="{{BASE}}generos/adicionar/" class="btn btn-outline-dark "><i class="fa-solid fa-plus"></i> Novo gênero</a>
+        </div>
+    </div>
+</div>
 
 <hr>
 
@@ -26,6 +33,7 @@
                 <td>{{genero.descricao}}</td>
                 <td>
                     <div class="text-end">
+                        <a href="{{BASE}}generos/visualizar/{{genero.id}}" class="btn btn-info btn-sm"><i class="fa-solid fa-magnifying-glass"></i> Visualizar</a>
                         <a href="{{BASE}}generos/editar/{{genero.id}}" class="btn btn-warning btn-sm"><i class="fa-solid fa-pen-to-square"></i> Editar</a>
                     </div>
                 </td>

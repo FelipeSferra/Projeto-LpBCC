@@ -4,8 +4,18 @@
 
 {% block body %}
 <br>
-<h1>Editar Editora</h1>
+<div class="row">
+    <div class="col-md-6">
+        <h1>Editar Editora</h1>
+    </div>
+    <div class="col-md-6">
+        <div class="text-end">
+            <a href="{{BASE}}editoras/excluir/{{editoraId}}" class="btn btn-outline-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
+        </div>
+    </div>
+</div>
 
+<hr>
 <form action="{{BASE}}editoras/alterar/{{editoraId}}" onsubmit="return validar(true);" method="post">
     <div class="row">
         <div class="col-md-12 mt-3">

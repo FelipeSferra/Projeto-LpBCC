@@ -4,9 +4,17 @@
 
 {% block body %}
 <br>
-<h1>Autores</h1>
+<div class="row">
+    <div class="col-md-6">
+        <h1>Autores</h1>
+    </div>
+    <div class="col-md-6">
+        <div class="text-end">
+            <a href="{{BASE}}autores/adicionar/" class="btn btn-outline-dark "><i class="fa-solid fa-plus"></i> Novo autor</a>
+        </div>
+    </div>
+</div>
 
-<a href="{{BASE}}autores/adicionar/" class="btn btn-outline-dark "><i class="fa-solid fa-plus"></i> Novo autor</a>
 
 <hr>
 
@@ -26,6 +34,7 @@
                 <td>{{autor.nome}}</td>
                 <td>
                     <div class="text-end">
+                        <a href="{{BASE}}autores/visualizar/{{autor.id}}" class="btn btn-info btn-sm"><i class="fa-solid fa-magnifying-glass"></i> Visualizar</a>
                         <a href="{{BASE}}autores/editar/{{autor.id}}" class="btn btn-warning btn-sm"><i class="fa-solid fa-pen-to-square"></i> Editar</a>
                     </div>
                 </td>

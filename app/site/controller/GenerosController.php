@@ -52,6 +52,26 @@ class GenerosController extends Controller {
         ]);
     }
 
+    public function visualizar($generoId = 0){
+        $generoId = filter_var($generoId, FILTER_SANITIZE_NUMBER_INT);
+
+        $genero = $this->generoModel->readById($generoId);
+
+        if ($genero->descricao == null) {
+            $this->showMessage(
+                "Gênero não encontrado",
+                "Os dados fornecidos estão incompletos ou são inválidos!",
+                "generos/"
+            );
+            return;
+        }
+
+        $this->load("generos/visualizar", [
+            "genero" => $genero,
+            "generoId" => $generoId
+        ]);
+    }
+
     //----------------------------------------------------//
 
     public function inserir() {
@@ -100,6 +120,21 @@ class GenerosController extends Controller {
             return;
         }
 
+        redirect(BASE . "generos/");
+    }
+
+    public function excluir($generoId){
+        $generoId = filter_var($generoId, FILTER_SANITIZE_NUMBER_INT);
+
+        if (!$this->generoModel->delete($generoId)) {
+            $this->showMessage(
+                "Erro",
+                "Houve um erro ao tentar alterar, tente novamente mais tarde!",
+                "generos/"
+            );
+            return;
+        }
+        
         redirect(BASE . "generos/");
     }
 }

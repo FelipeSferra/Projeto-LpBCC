@@ -52,6 +52,26 @@ class AutoresController extends Controller {
         ]);
     }
 
+    public function visualizar($autorId = 0){
+        $autorId = filter_var($autorId, FILTER_SANITIZE_NUMBER_INT);
+
+        $autor = $this->autorModel->readById($autorId);
+
+        if ($autor->nome == null) {
+            $this->showMessage(
+                "Autor não encontrado",
+                "Os dados fornecidos estão incompletos ou são inválidos!",
+                "autores/"
+            );
+            return;
+        }
+
+        $this->load("autores/visualizar", [
+            "autor" => $autor,
+            "autorId" => $autorId
+        ]);
+    }
+
     //----------------------------------------------------//
 
     public function inserir() {
@@ -94,6 +114,21 @@ class AutoresController extends Controller {
         }
 
         if (!$this->autorModel->update($autorId, $autor)) {
+            $this->showMessage(
+                "Erro",
+                "Houve um erro ao tentar alterar, tente novamente mais tarde!",
+                "autores/"
+            );
+            return;
+        }
+
+        redirect(BASE . "autores/");
+    }
+
+    public function excluir($autorId){
+        $autorId = filter_var($autorId, FILTER_SANITIZE_NUMBER_INT);
+
+        if (!$this->autorModel->delete($autorId)) {
             $this->showMessage(
                 "Erro",
                 "Houve um erro ao tentar alterar, tente novamente mais tarde!",

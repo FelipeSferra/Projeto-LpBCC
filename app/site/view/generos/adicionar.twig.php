@@ -6,6 +6,8 @@
 <br>
 <h1>Novo Gênero</h1>
 
+<hr>
+
 <form action="{{BASE}}generos/inserir" onsubmit="return validar(false);" method="post">
     <div class="row">
         <div class="col-md-12 mt-3">

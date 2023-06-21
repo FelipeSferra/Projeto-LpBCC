@@ -6,6 +6,8 @@
 <br>
 <h1>Novo Autor</h1>
 
+<hr>
+
 <form action="{{BASE}}autores/inserir" onsubmit="return validar(false);" method="post">
     <div class="row">
         <div class="col-md-12 mt-3">
@@ -23,4 +25,5 @@
         </div>
     </div>
 </form>
+<script src="{{BASE}}js/autores.js"></script>
 {% endblock %}

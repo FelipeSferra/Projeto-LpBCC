@@ -33,6 +33,12 @@ class EditoraModel {
         return $this->pdo->executeNonQuery($sql, $params);
     }
 
+    public function delete(int $id){
+        $sql = "UPDATE editora SET D_E_L_E_T_E = '*' WHERE id = :id";
+
+        return $this->pdo->executeNonQuery($sql, [":id" => $id]);
+    }
+
     public function readById(int $editoraId) {
         $sql = "SELECT * FROM editora WHERE id = :id";
 
@@ -42,7 +48,7 @@ class EditoraModel {
     }
 
     public function readAll() {
-        $sql = "SELECT * FROM editora ORDER BY nome ASC";
+        $sql = "SELECT * FROM editora WHERE D_E_L_E_T_E IS NULL ORDER BY nome ASC";
 
         $dt = $this->pdo->executeQuery($sql);
         $lista = [];

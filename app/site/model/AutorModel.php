@@ -13,7 +13,7 @@ class AutorModel {
     }
 
     public function insert(string $autor) {
-        $sql = "INSERT INTO autor (NOME) values (:nome)";
+        $sql = "INSERT INTO autor (NOME) VALUES (:nome)";
         $params = [
             ":nome" => $autor
         ];
@@ -24,13 +24,19 @@ class AutorModel {
     }
 
     public function update(int $id, string $autor) {
-        $sql = "UPDATE autor SET nome = :nome where id = :id";
+        $sql = "UPDATE autor SET nome = :nome WHERE id = :id";
         $params = [
             ":id" => $id,
             ":nome" => $autor
         ];
 
         return $this->pdo->executeNonQuery($sql, $params);
+    }
+
+    public function delete(int $id){
+        $sql = "UPDATE autor SET D_E_L_E_T_E = '*' WHERE id=:id";
+        
+        return $this->pdo->executeNonQuery($sql, [":id" => $id]);
     }
 
     public function readById(int $autorId) {
@@ -42,7 +48,7 @@ class AutorModel {
     }
 
     public function readAll() {
-        $sql = "SELECT * FROM autor ORDER BY nome ASC";
+        $sql = "SELECT * FROM autor WHERE D_E_L_E_T_E IS NULL ORDER BY nome ASC";
 
         $dt = $this->pdo->executeQuery($sql);
         $lista = [];

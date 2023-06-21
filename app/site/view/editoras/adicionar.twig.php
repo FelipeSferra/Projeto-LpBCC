@@ -6,6 +6,8 @@
 <br>
 <h1>Nova Editora</h1>
 
+<hr>
+
 <form action="{{BASE}}editoras/inserir" onsubmit="return validar(false);" method="post">
     <div class="row">
         <div class="col-md-12 mt-3">
