@@ -34,7 +34,7 @@
         </div>
         <div class="col-md-2 mt-3">
             <label for="nmQtde">Livros Emprestados</label>
-            <input type="number" id="nmQtde" name="nmQtde" class="form-control" placeholder="Quantidade de emprestimos Aqui" value="{{cliente.qtde_emprestimos}}">
+            <input type="number" id="nmQtde" name="nmQtde" class="form-control" placeholder="Quantidade de emprestimos Aqui" value="{{cliente.qtde}}">
         </div>
     </div>
     <div class="row">

@@ -31,7 +31,7 @@ class ClienteModel {
 
     public function update(Cliente $cliente) {
         $sql = "UPDATE cliente SET nome = :nome, cep = :cep, endereco = :endereco, ";
-        $sql .= "  numero = :numero, cidade = :cidade, uf = :uf WHERE id = :id ";
+        $sql .= "  numero = :numero, cidade = :cidade, uf = :uf, qtde_emprestimos = :qtde WHERE id = :id ";
 
         $params = [
             ":id" => $cliente->getId(),
@@ -41,6 +41,7 @@ class ClienteModel {
             ":numero" => $cliente->getNumero(),
             ":cidade" => $cliente->getCidade(),
             ":uf" => $cliente->getUf(),
+            ":qtde" => $cliente->getQtde()
         ];
 
         return $this->pdo->executeNonQuery($sql, $params);
