@@ -5,7 +5,7 @@ function validar(validateId){
     var valid = true;
 
     if(getValueById("txtTitulo").length < 3){
-        appendHTMLById("dvAlert","<div class='alert alert-warning col-md-6'>Livro inválido. Mínimo 3 caracteres!</div>");
+        appendHTMLById("dvAlert","<div class='alert alert-warning col-md-6'>Título inválido. Mínimo 3 caracteres!</div>");
         valid = false;
     }
 
