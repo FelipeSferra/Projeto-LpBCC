@@ -17,7 +17,6 @@
 
 <hr>
 
-
 <div class="row">
     <div class="col-md-6 mt-3">
         <input type="hidden" id="txtId" value="{{livroId}}">
@@ -37,21 +36,15 @@
 <div class="row">
     <div class="col-md-4 mt-3">
         <label for="slEditora">Editora</label>
-        {% for editora in listaEditora %}
         <input type="text" id="slEditora" name="slEditora" class="form-control" value="{{editora.nome}}" readonly>
-        {% endfor %}
     </div>
     <div class="col-md-4 mt-3">
         <label for="slGenero">Gênero</label>
-        {% for genero in listaGenero %}
         <input type="text" id="slGenero" name="slGenero" class="form-control" value="{{genero.descricao}}" readonly>
-        {% endfor %}
     </div>
     <div class="col-md-4 mt-3">
         <label for="slAutor">Autor</label>
-        {% for autor in listaAutor %}
         <input type="text" id="slAutor" name="slAutor" class="form-control" value="{{autor.nome}}" readonly>
-        {% endfor %}
     </div>
 </div>
 

@@ -28,7 +28,6 @@ class LivrosController extends Controller {
         }
 
         $this->load("livros/main", [
-            "listaGenero" => (new GeneroModel())->readAll(),
             "listaLivro" => $livros
         ]);
     }
@@ -80,9 +79,9 @@ class LivrosController extends Controller {
         }
 
         $this->load("livros/visualizar", [
-            "listaEditora" => (new EditoraModel())->readAll(),
-            "listaAutor" => (new AutorModel())->readAll(),
-            "listaGenero" => (new GeneroModel())->readAll(),
+            "editora" => (new EditoraModel())->readById($livro->getEditoraId()),
+            "autor" => (new AutorModel())->readById($livro->getAutorId()),
+            "genero" => (new GeneroModel())->readById($livro->getGeneroId()),
             "livro" => $livro,
             "livroId" => $livroId
         ]);

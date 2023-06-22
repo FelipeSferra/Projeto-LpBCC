@@ -27,10 +27,9 @@
         <div class="col-md-3 mt-3">
             <label for="slStatus">Status</label>
             <select id="slStatus" name="slStatus" class="form-select">
-                <option value="{{livro.status}}">{{livro.status}}</option>
-                <option value="disponivel">Disponível</option>
-                <option value="emprestado">Emprestado</option>
-                <option value="atrasado">Atrasado</option>
+                <option value="Disponivel" {{ livro.status == "Disponivel" ? "selected" : "" }}>Disponível</option>
+                <option value="Emprestado" {{livro.status == "Emprestado" ? "selected" : "" }}>Emprestado</option>
+                <option value="Atrasado" {{livro.status == "Atrasado" ? "selected" : "" }}>Atrasado</option>
             </select>
         </div>
         <div class="col-md-3 mt-3">
@@ -43,7 +42,6 @@
         <div class="col-md-4 mt-3">
             <label for="slEditora">Editora</label>
             <select id="slEditora" name="slEditora" class="form-select">
-                <option selected>Selecione...</option>
                 {% for editora in listaEditora %}
                 <option value="{{editora.id}}" {{editora.id == livro.editoraId ? "selected" : ""}}>{{editora.nome}}</option>
                 {% endfor %}
@@ -52,7 +50,6 @@
         <div class="col-md-4 mt-3">
             <label for="slGenero">Gênero</label>
             <select id="slGenero" name="slGenero" class="form-select">
-                <option selected>Selecione...</option>
                 {% for genero in listaGenero %}
                 <option value="{{genero.id}}" {{genero.id == livro.generoId ? "selected" : ""}}>{{genero.descricao}}</option>
                 {% endfor %}
@@ -61,7 +58,6 @@
         <div class="col-md-4 mt-3">
             <label for="slAutor">Autor</label>
             <select id="slAutor" name="slAutor" class="form-select">
-                <option selected>Selecione...</option>
                 {% for autor in listaAutor %}
                 <option value="{{autor.id}}" {{autor.id == livro.autorId ? "selected" : ""}}>{{autor.nome}}</option>
                 {% endfor %}

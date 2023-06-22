@@ -18,9 +18,9 @@
             <label for="slStatus">Status</label>
             <select id="slStatus" name="slStatus" class="form-select">
                 <option selected>Selecione...</option>
-                <option value="disponivel">Disponível</option>
-                <option value="emprestado">Emprestado</option>
-                <option value="atrasado">Atrasado</option>
+                <option value="Disponivel">Disponível</option>
+                <option value="Emprestado">Emprestado</option>
+                <option value="Atrasado">Atrasado</option>
             </select>
         </div>
         <div class="col-md-3 mt-3">
