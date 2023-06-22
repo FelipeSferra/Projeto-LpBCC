@@ -4,21 +4,30 @@
 
 {% block body %}
 <br>
-<h1>Alterar Livro</h1>
+<div class="row">
+    <div class="col-md-6">
+        <h1>Alterar Livro</h1>
+    </div>
+    <div class="col-md-6">
+        <div class="text-end">
+            <a href="{{BASE}}livros/excluir/{{livroId}}" class="btn btn-outline-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
+        </div>
+    </div>
+</div>
 
 <hr>
 
 <form action="{{BASE}}livros/alterar/{{livroId}}" onsubmit="return validar(true);" method="post">
     <div class="row">
         <div class="col-md-6 mt-3">
-            <label for="txtTitulo">Título</label>
             <input type="hidden" id="txtId" value="{{livroId}}">
+            <label for="txtTitulo">Título</label>
             <input type="text" id="txtTitulo" name="txtTitulo" class="form-control" placeholder="Título Aqui" value="{{livro.titulo}}">
         </div>
         <div class="col-md-3 mt-3">
             <label for="slStatus">Status</label>
             <select id="slStatus" name="slStatus" class="form-select">
-                <option value=""></option>
+                <option value="{{livro.status}}">{{livro.status}}</option>
                 <option value="disponivel">Disponível</option>
                 <option value="emprestado">Emprestado</option>
                 <option value="atrasado">Atrasado</option>
@@ -36,7 +45,7 @@
             <select id="slEditora" name="slEditora" class="form-select">
                 <option selected>Selecione...</option>
                 {% for editora in listaEditora %}
-                <option value="{{editora.id}}">{{editora.nome}}</option>
+                <option value="{{editora.id}}" {{editora.id == livro.editoraId ? "selected" : ""}}>{{editora.nome}}</option>
                 {% endfor %}
             </select>
         </div>
@@ -45,7 +54,7 @@
             <select id="slGenero" name="slGenero" class="form-select">
                 <option selected>Selecione...</option>
                 {% for genero in listaGenero %}
-                <option value="{{genero.id}}">{{genero.descricao}}</option>
+                <option value="{{genero.id}}" {{genero.id == livro.generoId ? "selected" : ""}}>{{genero.descricao}}</option>
                 {% endfor %}
             </select>
         </div>
@@ -54,7 +63,7 @@
             <select id="slAutor" name="slAutor" class="form-select">
                 <option selected>Selecione...</option>
                 {% for autor in listaAutor %}
-                <option value="{{autor.id}}">{{autor.nome}}</option>
+                <option value="{{autor.id}}" {{autor.id == livro.autorId ? "selected" : ""}}>{{autor.nome}}</option>
                 {% endfor %}
             </select>
         </div>
@@ -63,14 +72,14 @@
     <div class="row">
         <div class="col-md-12 mt-3">
             <label for="txtThumb">Thumbnail</label>
-            <input type="text" id="txtThumb" name="txtThumb" class="form-control" placeholder="Thumbnail aqui">
+            <input type="text" id="txtThumb" name="txtThumb" class="form-control" placeholder="Thumbnail aqui" value="{{livro.thumb}}">
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-12 mt-3">
             <label for="txtSinopse">Sinopse</label>
-            <textarea class="form-control" id="txtSinopse" name="txtSinopse" rows=3 placeholder="Sinopse aqui"></textarea>
+            <textarea class="form-control" id="txtSinopse" name="txtSinopse" rows=3 placeholder="Sinopse aqui">{{livro.sinopse}}</textarea>
         </div>
     </div>
 
@@ -80,7 +89,7 @@
         </div>
         <div class="text-end">
             <a href="{{BASE}}livros/" class="btn btn-danger me-md-2" role="button"><i class="fa-solid fa-xmark"></i> Cancelar</a>
-            <button type="submit" class="btn btn-success me-md-2"><i class="fa-solid fa-check"></i> Adicionar</button>
+            <button type="submit" class="btn btn-success me-md-2"><i class="fa-solid fa-check"></i> Editar</button>
         </div>
     </div>
 </form>

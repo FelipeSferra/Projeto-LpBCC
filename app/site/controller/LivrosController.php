@@ -18,7 +18,19 @@ class LivrosController extends Controller {
     }
 
     public function index() {
-        $this->load("livros/main", []);
+
+        $livros = [];
+
+        if (filter_input(INPUT_POST, "slGenero", FILTER_SANITIZE_NUMBER_INT)) {
+            $livros = $this->livroModel->readAllByGenre(filter_input(INPUT_POST, "slGenero", FILTER_SANITIZE_NUMBER_INT));
+        } else {
+            $livros = $this->livroModel->readLast(15);
+        }
+
+        $this->load("livros/main", [
+            "listaGenero" => (new GeneroModel())->readAll(),
+            "listaLivro" => $livros
+        ]);
     }
 
     public function adicionar() {
@@ -48,7 +60,31 @@ class LivrosController extends Controller {
             "listaEditora" => (new EditoraModel())->readAll(),
             "listaAutor" => (new AutorModel())->readAll(),
             "listaGenero" => (new GeneroModel())->readAll(),
-            "livro" => $this->livroModel->readById($livroId)
+            "livro" => $this->livroModel->readById($livroId),
+            "livroId" => $livroId
+        ]);
+    }
+
+    public function visualizar(int $livroId) {
+        $livroId = filter_var($livroId, FILTER_SANITIZE_NUMBER_INT);
+
+        $livro = $this->livroModel->readById($livroId);
+
+        if ($livro->getTitulo() == NULL) {
+            $this->showMessage(
+                "Livro não encontrado",
+                "Os dados fornecidos estão incompletos ou são inválidos!",
+                "livros/"
+            );
+            return;
+        }
+
+        $this->load("livros/visualizar", [
+            "listaEditora" => (new EditoraModel())->readAll(),
+            "listaAutor" => (new AutorModel())->readAll(),
+            "listaGenero" => (new GeneroModel())->readAll(),
+            "livro" => $livro,
+            "livroId" => $livroId
         ]);
     }
 
@@ -94,6 +130,22 @@ class LivrosController extends Controller {
         }
 
         if (!$this->livroModel->update($livro)) {
+            $this->showMessage(
+                "Erro",
+                "Houve um erro ao tentar alterar, tente novamente mais tarde!",
+                "livros/"
+            );
+            return;
+        }
+
+        redirect(BASE . "livros/");
+    }
+
+    public function excluir(int $livroId) {
+        $livro = $this->getInput();
+        $livro->setId($livroId);
+
+        if (!$this->livroModel->delete($livro)) {
             $this->showMessage(
                 "Erro",
                 "Houve um erro ao tentar alterar, tente novamente mais tarde!",

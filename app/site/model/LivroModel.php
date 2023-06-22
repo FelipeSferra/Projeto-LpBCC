@@ -51,6 +51,15 @@ class LivroModel {
         return $this->pdo->executeNonQuery($sql, $params);
     }
 
+    public function delete(Livro $livro){
+        $sql = "UPDATE livro SET D_E_L_E_T_E = '*' WHERE id = :id";
+        $params = [
+            ":id" => $livro->getId()
+        ];
+
+        return $this->pdo->executeNonQuery($sql, $params);
+    }
+
     public function readById(int $livroId) {
         $sql = "SELECT * FROM livro WHERE id = :id AND D_E_L_E_T_E IS NULL";
 
@@ -61,8 +70,24 @@ class LivroModel {
         return $this->collection($dr);
     }
 
+    public function readLast($limit = 10) {
+        $sql = "SELECT l.*, g.descricao as genDesc FROM livro l INNER JOIN genero g ON g.id = l.genero_id LIMIT :limit";
+
+        $dt = $this->pdo->executeQuery($sql, [
+            ":limit" => $limit
+        ]);
+
+        $lista = [];
+
+        foreach($dt as $dr){
+            $lista[] = $this->collection($dr);
+        }
+
+        return $lista;
+    }
+
     public function readAllByGenre(int $generoId) {
-        $sql = "SELECT l.*, g.descricao as genDesc FROM livro l INNER JOIN genero ON g.id = l.genero_id WHERE l.genero_id = :generoId AND D_E_L_E_T_E IS NULL";
+        $sql = "SELECT l.*, g.descricao as genDesc FROM livro l INNER JOIN genero g ON g.id = l.genero_id WHERE l.genero_id = :generoId AND D_E_L_E_T_E IS NULL";
 
         $dt = $this->pdo->executeQuery($sql, [
             ":generoId" => $generoId
