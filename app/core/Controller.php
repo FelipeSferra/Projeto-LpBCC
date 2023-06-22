@@ -22,7 +22,7 @@ class Controller {
         ]);
     }
 
-    protected function createSlug(string $titulo){
+    protected function createSlug(string $titulo = "null"){
         $slug = new \Cocur\Slugify\Slugify();
 
         return $slug->slugify($titulo);

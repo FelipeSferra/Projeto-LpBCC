@@ -32,6 +32,26 @@ class LivrosController extends Controller {
         );
     }
 
+    public function editar(int $livroId) {
+        $livroId = filter_var($livroId, FILTER_SANITIZE_NUMBER_INT);
+
+        if ($livroId <= 0) {
+            $this->showMessage(
+                "Formulário Inválido",
+                "Os dados fornecidos estão incompletos ou são inválidos!",
+                "livros/"
+            );
+            return;
+        }
+
+        $this->load("livros/editar", [
+            "listaEditora" => (new EditoraModel())->readAll(),
+            "listaAutor" => (new AutorModel())->readAll(),
+            "listaGenero" => (new GeneroModel())->readAll(),
+            "livro" => $this->livroModel->readById($livroId)
+        ]);
+    }
+
     //----------------------------------------------------//
 
     public function inserir() {
@@ -49,6 +69,31 @@ class LivrosController extends Controller {
         $result = $this->livroModel->insert($livro);
 
         if ($result <= 0) {
+            $this->showMessage(
+                "Erro",
+                "Houve um erro ao tentar alterar, tente novamente mais tarde!",
+                "livros/"
+            );
+            return;
+        }
+
+        redirect(BASE . "livros/");
+    }
+
+    public function alterar(int $livroId) {
+        $livro = $this->getInput();
+        $livro->setId($livroId);
+
+        if (!$this->validar($livro)) {
+            $this->showMessage(
+                "Formulário Inválido",
+                "Os dados fornecidos estão incompletos ou são inválidos!",
+                "livros/"
+            );
+            return;
+        }
+
+        if (!$this->livroModel->update($livro)) {
             $this->showMessage(
                 "Erro",
                 "Houve um erro ao tentar alterar, tente novamente mais tarde!",
