@@ -33,7 +33,7 @@ class PesquisaController extends Controller {
         $livros = (new LivroModel())->search($termo);
 
         $this->load("pesquisa/main", [
-            "livros" => $livros,
+            "listaLivros" => $livros,
             "termo" => $termo,
             "qtdeResultado" => count($livros)
         ]);

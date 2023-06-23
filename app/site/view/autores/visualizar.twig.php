@@ -30,5 +30,5 @@
         <a href="{{BASE}}autores/" class="btn btn-success me-md-2" role="button"><i class="fa-solid fa-rotate-left"></i> Voltar</a>
     </div>
 </div>
-
+<script src="{{BASE}}js/autores.js"></script>
 {% endblock %}

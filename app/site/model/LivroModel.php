@@ -70,6 +70,16 @@ class LivroModel {
         return $this->collection($dr);
     }
 
+    public function readBySlug(string $livroSlug) {
+        $sql = "SELECT * FROM livro WHERE slug = :slug AND D_E_L_E_T_E IS NULL";
+
+        $dr = $this->pdo->executeQueryOneRow($sql, [
+            ":slug" => $livroSlug
+        ]);
+
+        return $this->collection($dr);
+    }
+
     public function readLast($limit = 10) {
         $sql = "SELECT l.*, g.descricao as genDesc FROM livro l INNER JOIN genero g ON g.id = l.genero_id LIMIT :limit";
 
@@ -86,8 +96,22 @@ class LivroModel {
         return $lista;
     }
 
+    public function readAll() {
+        $sql = "SELECT * FROM livro WHERE D_E_L_E_T_E IS NULL ORDER BY titulo ASC";
+
+        $dt = $this->pdo->executeQuery($sql);
+
+        $lista = [];
+
+        foreach($dt as $dr){
+            $lista[] = $this->collection($dr);
+        }
+
+        return $lista;
+    }
+
     public function readAllByGenre(int $generoId) {
-        $sql = "SELECT l.*, g.descricao as genDesc FROM livro l INNER JOIN genero g ON g.id = l.genero_id WHERE l.genero_id = :generoId AND D_E_L_E_T_E IS NULL";
+        $sql = "SELECT l.*, g.descricao as genDesc FROM livro l INNER JOIN genero g ON g.id = l.genero_id WHERE l.genero_id = :generoId AND l.D_E_L_E_T_E IS NULL";
 
         $dt = $this->pdo->executeQuery($sql, [
             ":generoId" => $generoId

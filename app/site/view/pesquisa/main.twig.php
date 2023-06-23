@@ -4,43 +4,25 @@
 
 {% block body %}
 <br>
-<h1>Pesquisa</h1>
+<h1>Pesquisa por: "{{termo}}"</h1>
 
-<p>Exibindo <span class="fw-bold">{{qtdeResultado}}</span> resultado(s) para o termo <span class="fw-bold">{{termo}}</span></p>
+<p>Exibindo <span class="fw-bold">{{qtdeResultado}}</span> resultado(s)</p>
 
 <hr>
 
-<div class="overflow-auto">
-    <table class="table table-light table-striped table-sm">
-        <thead class="table-dark">
-            <tr>
-                <th>#ID</th>
-                <th>Titulo</th>
-                <th>Slug</th>
-                <th>Status</th>
-                <th>QTDE</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for livro in livros %}
-            <tr>
-                <td>{{livro.id}}</td>
-                <td>{{livro.titulo}}</td>
-                <td>{{livro.slug}}</td>
-                <td>{{livro.status}}</td>
-                <td>{{livro.qtde}}</td>
-                <td>
-                    <div class="text-end">
-                        <a href="{{BASE}}livros/visualizar/{{livro.id}}" class="btn btn-info btn-sm me-md-2"><i class="fa-solid fa-magnifying-glass"></i> Visualizar</a>
-                        <a href="{{BASE}}livros/editar/{{livro.id}}" class="btn btn-warning btn-sm me-md-2"><i class="fa-solid fa-pen-to-square"></i> Editar</a>
-                    </div>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+<div class="row mt-4">
+    {% for livro in listaLivros %}
+    <div class="col-md-4">
+        <div class="card border-primary mb-3" style="max-width: 20rem;">
+            <div class="card-body">
+                <img src="{{livro.thumb}}" alt="{{livro.slug}}" class="w-100 img-thumb">
+                <hr>
+                <h4 class="card-title">{{livro.titulo}}</h4>
+                <a href="{{BASE}}livros/visualizar/{{livro.slug}}" class="stretched-link"></a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
 </div>
-
 
 {% endblock %}

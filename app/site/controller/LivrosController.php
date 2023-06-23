@@ -19,13 +19,7 @@ class LivrosController extends Controller {
 
     public function index() {
 
-        $livros = [];
-
-        if (filter_input(INPUT_POST, "slGenero", FILTER_SANITIZE_NUMBER_INT)) {
-            $livros = $this->livroModel->readAllByGenre(filter_input(INPUT_POST, "slGenero", FILTER_SANITIZE_NUMBER_INT));
-        } else {
-            $livros = $this->livroModel->readLast(15);
-        }
+        $livros = $this->livroModel->readAll();
 
         $this->load("livros/main", [
             "listaLivro" => $livros
@@ -64,10 +58,10 @@ class LivrosController extends Controller {
         ]);
     }
 
-    public function visualizar(int $livroId) {
-        $livroId = filter_var($livroId, FILTER_SANITIZE_NUMBER_INT);
+    public function visualizar(string $livroSlug) {
+        $livroSlug = filter_var($livroSlug, FILTER_UNSAFE_RAW);
 
-        $livro = $this->livroModel->readById($livroId);
+        $livro = $this->livroModel->readBySlug($livroSlug);
 
         if ($livro->getTitulo() == NULL) {
             $this->showMessage(
@@ -83,7 +77,7 @@ class LivrosController extends Controller {
             "autor" => (new AutorModel())->readById($livro->getAutorId()),
             "genero" => (new GeneroModel())->readById($livro->getGeneroId()),
             "livro" => $livro,
-            "livroId" => $livroId
+            "livroSlug" => $livroSlug
         ]);
     }
 

@@ -1,17 +1,12 @@
 {% extends "partials/body.twig.php" %}
 
-{% block title %}Teste - Visualizar Livro{% endblock %}
+{% block title %}{{livro.titulo}}{% endblock %}
 
 {% block body %}
 <br>
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
         <h1>{{livro.titulo}}</h1>
-    </div>
-    <div class="col-md-6">
-        <div class="text-end">
-            <a href="{{BASE}}livros/excluir/{{livroId}}" class="btn btn-outline-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
-        </div>
     </div>
 </div>
 
@@ -19,7 +14,6 @@
 
 <div class="row">
     <div class="col-md-6 mt-3">
-        <input type="hidden" id="txtId" value="{{livroId}}">
         <label for="txtTitulo">Título</label>
         <input type="text" id="txtTitulo" name="txtTitulo" class="form-control" placeholder="Título Aqui" value="{{livro.titulo}}" readonly>
     </div>

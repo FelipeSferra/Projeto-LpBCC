@@ -17,7 +17,7 @@
 
 <hr>
 
-<form action="{{BASE}}autores/alterar/{{autorId}}" onsubmit="return validar(true);" method="post">
+<form action="{{BASE}}autores/alterar/{{autorId}}" onsubmit="return validar(true);" method="post" id="frmEditarAutor" name="frmEditarAutor">
     <div class="row">
         <div class="col-md-12 mt-3">
             <label for="txtAut">Autor</label>
@@ -31,9 +31,10 @@
         </div>
         <div class="text-end">
             <a href="{{BASE}}autores/" class="btn btn-danger me-md-2" role="button"><i class="fa-solid fa-xmark"></i> Cancelar</a>
-            <button type="submit" class="btn btn-warning me-md-2"><i class="fa-solid fa-check"></i> Editar</button>
+            <button type="submit" class="btn btn-warning me-md-2" id="submitEditarAutor" name="submitEditarAutor"><i class="fa-solid fa-check"></i> Editar</button>
         </div>
     </div>
 </form>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="{{BASE}}js/autores.js"></script>
 {% endblock %}

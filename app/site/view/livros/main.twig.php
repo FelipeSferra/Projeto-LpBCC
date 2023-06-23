@@ -1,6 +1,6 @@
 {% extends "partials/body.twig.php" %}
 
-{% block title %}Teste - Livros{% endblock %}
+{% block title %}Brisa Livros - Livros{% endblock %}
 
 {% block body %}
 <br>
@@ -39,7 +39,7 @@
                 <td>{{livro.qtde}}</td>
                 <td>
                     <div class="text-end">
-                        <a href="{{BASE}}livros/visualizar/{{livro.id}}" class="btn btn-info btn-sm me-md-2"><i class="fa-solid fa-magnifying-glass"></i> Visualizar</a>
+                        <a href="{{BASE}}livros/visualizar/{{livro.slug}}" class="btn btn-info btn-sm me-md-2"><i class="fa-solid fa-magnifying-glass"></i> Visualizar</a>
                         <a href="{{BASE}}livros/editar/{{livro.id}}" class="btn btn-warning btn-sm me-md-2"><i class="fa-solid fa-pen-to-square"></i> Editar</a>
                     </div>
                 </td>
