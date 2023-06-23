@@ -15,7 +15,7 @@ class ClientesController extends Controller {
     }
 
     public function index() {
-        $this->load("clientes/main",[
+        $this->load("clientes/main", [
             "listaCliente" => $this->clienteModel->readAll()
         ]);
     }
@@ -24,14 +24,14 @@ class ClientesController extends Controller {
         $this->load("clientes/adicionar");
     }
 
-    public function editar(int $clienteId){
+    public function editar(int $clienteId) {
         $clienteId = filter_var($clienteId, FILTER_SANITIZE_NUMBER_INT);
 
         if ($clienteId <= 0) {
             $this->showMessage(
                 "Formulário Inválido",
                 "Os dados fornecidos estão incompletos ou são inválidos!",
-                "livros/"
+                "clientes/"
             );
             return;
         }
@@ -42,12 +42,31 @@ class ClientesController extends Controller {
         ]);
     }
 
+    public function visualizar(int $clienteId) {
+        $clienteId = filter_var($clienteId, FILTER_SANITIZE_NUMBER_INT);
+        $cliente = $this->clienteModel->readById($clienteId);
+
+        if ($cliente->getNome() == null) {
+            $this->showMessage(
+                "Cliente não encontrada",
+                "Os dados fornecidos estão incompletos ou são inválidos!",
+                "clientes/"
+            );
+            return;
+        }
+
+        $this->load("clientes/visualizar", [
+            "cliente" => $cliente,
+            "clienteId" => $clienteId
+        ]);
+    }
+
     //----------------------------------------------------//
-    
-    public function inserir(){
+
+    public function inserir() {
         $cliente = $this->getInput();
-        
-        if(!$this->validar($cliente, false)){
+
+        if (!$this->validar($cliente, false)) {
             $this->showMessage(
                 "Formulário Inválido",
                 "Os dados fornecidos estão incompletos ou são inválidos!",
@@ -67,10 +86,9 @@ class ClientesController extends Controller {
         }
 
         redirect(BASE . "clientes/editar/" . $result);
-
     }
 
-    public function alterar(int $clienteId){
+    public function alterar(int $clienteId) {
         $cliente = $this->getInput();
         $cliente->setId($clienteId);
 
@@ -95,7 +113,7 @@ class ClientesController extends Controller {
         redirect(BASE . "clientes/");
     }
 
-    public function excluir(int $clienteId){
+    public function excluir(int $clienteId) {
         $cliente = $this->getInput();
         $cliente->setId($clienteId);
 

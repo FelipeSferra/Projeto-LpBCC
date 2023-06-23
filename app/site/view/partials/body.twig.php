@@ -1,3 +1,4 @@
+{% apply spaceless %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -160,9 +161,9 @@
                         <a class="nav-link" href="{{BASE}}about/">Sobre</a>
                     </li>
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-sm-2" type="search" placeholder="Pesquisar">
-                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Pesquisar</button>
+                <form class="d-flex" method="get" action="{{BASE}}pesquisa/" id="frmPesquisa">
+                    <input class="form-control me-sm-2" name="txtPesquisa" id="txtPesquisa" type="search" placeholder="Pesquisar" minlength="2" onsubmit="return pesquisar();">
+                    <button class="btn btn-secondary my-2 my-sm-0" type="button" onclick="pesquisar();" name="btnPesquisa" id="btnPesquisa">Pesquisar</button>
                 </form>
             </div>
         </div>
@@ -171,9 +172,14 @@
     <div class="max-width">
         {% block body %}{% endblock %}
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{BASE}}js/script.js"></script>
 </body>
 
 </html>
+
+{% endapply %}

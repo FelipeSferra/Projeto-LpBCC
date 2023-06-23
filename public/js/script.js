@@ -9,3 +9,42 @@ function getById(id){
 function appendHTMLById(id, html){
     document.getElementById(id).innerHTML += html;
 }
+
+function pesquisar(){
+
+    if(getValueById("txtPesquisa").length <= 2){
+        Swal.fire(
+            'Erro',
+            'A pesquisa precisa ter mais de 2 caracteres!',
+            'error'
+          )
+        return false;
+    }
+
+    var form = getById("frmPesquisa");
+    var url = form.action + "p/" + getValueById("txtPesquisa");
+
+    document.location.href = url;
+    return false;
+}
+
+// $("#submitLibro").on('click', function(e){
+//     e.preventDefault();
+
+     
+// Swal.fire({
+//     title: 'Do you want to save the changes?',
+//     showDenyButton: true,
+//     showCancelButton: true,
+//     confirmButtonText: 'Save',
+//     denyButtonText: `Don't save`,
+//   }).then((result) => {
+//     /* Read more about isConfirmed, isDenied below */
+//     if (result.isConfirmed) {
+//         $("#frmEditarLibro").submit();
+//         Swal.fire('Saved!', '', 'success')
+//     } else if (result.isDenied) {
+//       Swal.fire('Changes are not saved', '', 'info')
+//     }
+//   })
+// })

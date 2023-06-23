@@ -6,7 +6,7 @@
 <br>
 <div class="row">
     <div class="col-md-6">
-        <h1>Visualizar Livro</h1>
+        <h1>{{livro.titulo}}</h1>
     </div>
     <div class="col-md-6">
         <div class="text-end">

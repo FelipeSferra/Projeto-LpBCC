@@ -1,19 +1,12 @@
 {% extends "partials/body.twig.php" %}
 
-{% block title %}Teste - Livros{% endblock %}
+{% block title %} Teste {% endblock %}
 
 {% block body %}
 <br>
-<div class="row">
-    <div class="col-md-6">
-        <h1>Livros</h1>
-    </div>
-    <div class="col-md-6">
-        <div class="text-end">
-            <a href="{{BASE}}livros/adicionar/" class="btn btn-outline-dark "><i class="fa-solid fa-plus"></i> Novo Livro</a>
-        </div>
-    </div>
-</div>
+<h1>Pesquisa</h1>
+
+<p>Exibindo <span class="fw-bold">{{qtdeResultado}}</span> resultado(s) para o termo <span class="fw-bold">{{termo}}</span></p>
 
 <hr>
 
@@ -30,7 +23,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for livro in listaLivro %}
+            {% for livro in livros %}
             <tr>
                 <td>{{livro.id}}</td>
                 <td>{{livro.titulo}}</td>
@@ -48,5 +41,6 @@
         </tbody>
     </table>
 </div>
+
 
 {% endblock %}

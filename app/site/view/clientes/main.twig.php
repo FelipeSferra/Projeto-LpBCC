@@ -47,8 +47,8 @@
                 <td></td>
                 <td>
                     <div class="text-end">
-                        <a href="{{BASE}}clientes/visualizar/{{cliente.id}}" class="btn btn-info btn-sm"><i class="fa-solid fa-magnifying-glass"></i> Visualizar</a>
-                        <a href="{{BASE}}clientes/editar/{{cliente.id}}" class="btn btn-warning btn-sm"><i class="fa-solid fa-pen-to-square"></i> Editar</a>
+                        <a href="{{BASE}}clientes/visualizar/{{cliente.id}}" class="btn btn-info btn-sm me-md-2"><i class="fa-solid fa-magnifying-glass"></i> Visualizar</a>
+                        <a href="{{BASE}}clientes/editar/{{cliente.id}}" class="btn btn-warning btn-sm me-md-2"><i class="fa-solid fa-pen-to-square"></i> Editar</a>
                     </div>
                 </td>
             </tr>

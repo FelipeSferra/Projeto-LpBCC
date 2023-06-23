@@ -102,6 +102,22 @@ class LivroModel {
         return $lista;
     }
 
+    public function search(string $termo) {
+        $sql = "SELECT l.*, g.descricao as genDesc FROM livro l INNER JOIN genero g ON g.id = l.genero_id WHERE UPPER(l.titulo) LIKE :titulo AND l.D_E_L_E_T_E IS NULL ORDER BY l.titulo DESC";
+
+        $dt = $this->pdo->executeQuery($sql, [
+            ":titulo" => strtoupper("%{$termo}%")
+        ]);
+
+        $lista = [];
+
+        foreach($dt as $dr){
+            $lista[] = $this->collection($dr);
+        }
+
+        return $lista;
+    }
+
     private function collection($arr) {
         $livro = new Livro();
         $livro->setId($arr["ID"] ?? null);
