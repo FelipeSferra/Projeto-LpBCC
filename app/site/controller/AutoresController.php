@@ -36,7 +36,7 @@ class AutoresController extends Controller {
         }
 
         $autor = $this->autorModel->readById($autorId);
-
+        
         if ($autor->nome == null) {
             $this->showMessage(
                 "Autor não encontrado",

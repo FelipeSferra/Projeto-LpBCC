@@ -4,7 +4,7 @@
 
 {% block body %}
 <br>
-<a class="icon-link icon-link-hover" href="{{BASE}}">
+<a class="icon-link" href="{{BASE}}">
     Voltar
 </a>
 <div class="row">
@@ -14,7 +14,7 @@
 </div>
 
 <hr>
-<div class="container text-center">
+<div class="container">
     <div class="row">
         <div class="col-md-4">
             <div class="card mb-2" style="max-width: 20rem;">
@@ -30,12 +30,12 @@
                 </div>
             </div>
         </div>
-        <div class=" col-md-8">
+        <div class="col-md-8">
             <div class="text-end">
                 <p>{{livro.sinopse}}</p>
             </div>
             <div class="text-end">
-                <button class="btn btn-success">teste</button>
+                <a href="{{BASE}}livros/excluir/{{livroId}}" class="btn btn-outline-info btn-md"><i class="fa-solid fa-book"></i> Emprestar o livro</a>
             </div>
         </div>
     </div>
