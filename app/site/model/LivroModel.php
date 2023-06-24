@@ -76,7 +76,6 @@ class LivroModel {
         $dr = $this->pdo->executeQueryOneRow($sql, [
             ":slug" => $livroSlug
         ]);
-
         return $this->collection($dr);
     }
 

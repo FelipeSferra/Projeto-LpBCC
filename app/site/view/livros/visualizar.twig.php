@@ -4,61 +4,40 @@
 
 {% block body %}
 <br>
+<a class="icon-link icon-link-hover" href="{{BASE}}">
+    Voltar
+</a>
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 mt-3">
         <h1>{{livro.titulo}}</h1>
     </div>
 </div>
 
 <hr>
-
-<div class="row">
-    <div class="col-md-6 mt-3">
-        <label for="txtTitulo">Título</label>
-        <input type="text" id="txtTitulo" name="txtTitulo" class="form-control" placeholder="Título Aqui" value="{{livro.titulo}}" readonly>
-    </div>
-    <div class="col-md-3 mt-3">
-        <label for="slStatus">Status</label>
-        <input type="text" id="slStatus" name="slStatus" class="form-control" value="{{livro.status}}" readonly>
-    </div>
-    <div class="col-md-3 mt-3">
-        <label for="nmQtde">Quantidade</label>
-        <input type="number" id="nmQtde" name="nmQtde" class="form-control" placeholder="Quantidade em estoque" value="{{livro.qtde}}" readonly>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-4 mt-3">
-        <label for="slEditora">Editora</label>
-        <input type="text" id="slEditora" name="slEditora" class="form-control" value="{{editora.nome}}" readonly>
-    </div>
-    <div class="col-md-4 mt-3">
-        <label for="slGenero">Gênero</label>
-        <input type="text" id="slGenero" name="slGenero" class="form-control" value="{{genero.descricao}}" readonly>
-    </div>
-    <div class="col-md-4 mt-3">
-        <label for="slAutor">Autor</label>
-        <input type="text" id="slAutor" name="slAutor" class="form-control" value="{{autor.nome}}" readonly>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-12 mt-3">
-        <label for="txtThumb">Thumbnail</label>
-        <input type="text" id="txtThumb" name="txtThumb" class="form-control" placeholder="Thumbnail aqui" value="{{livro.thumb}}" readonly>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-12 mt-3">
-        <label for="txtSinopse">Sinopse</label>
-        <textarea class="form-control" id="txtSinopse" name="txtSinopse" rows=3 placeholder="Sinopse aqui" readonly>{{livro.sinopse}}</textarea>
-    </div>
-</div>
-
-<div class="row mt-4">
-    <div class="text-end">
-        <a href="{{BASE}}livros/" class="btn btn-success me-md-2" role="button"><i class="fa-solid fa-rotate-left"></i> Voltar</a>
+<div class="container text-center">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-2" style="max-width: 20rem;">
+                <div class="card-body">
+                    <img src="{{livro.thumb}}" alt="{{livro.slug}}" class="w-100 img-thumb">
+                    <hr>
+                    <span class="fw-bold">Autor:</span>
+                    <p>{{autor.id == livro.autorId ? autor.nome : ""}}</p>
+                    <span class="fw-bold">Gênero:</span>
+                    <p>{{genero.id == livro.generoId ? genero.descricao : ""}}</p>
+                    <span class="fw-bold">Editora:</span>
+                    <p>{{editora.id == livro.editoraId ? editora.nome : ""}}</p>
+                </div>
+            </div>
+        </div>
+        <div class=" col-md-8">
+            <div class="text-end">
+                <p>{{livro.sinopse}}</p>
+            </div>
+            <div class="text-end">
+                <button class="btn btn-success">teste</button>
+            </div>
+        </div>
     </div>
 </div>
 

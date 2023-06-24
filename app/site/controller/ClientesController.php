@@ -26,7 +26,7 @@ class ClientesController extends Controller {
 
     public function editar(int $clienteId) {
         $clienteId = filter_var($clienteId, FILTER_SANITIZE_NUMBER_INT);
-
+        
         if ($clienteId <= 0) {
             $this->showMessage(
                 "Formulário Inválido",
