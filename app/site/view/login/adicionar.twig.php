@@ -1,6 +1,6 @@
 {% extends "partials/body.twig.php" %}
 
-{% block title %}Teste - Cadastrar Login{% endblock %}
+{% block title %}Brisa Livros - Cadastrar Login{% endblock %}
 
 {% block body %}
 <br>
@@ -20,6 +20,8 @@
         <div class="col-md-6 mt-3">
             <label for="txtSen">Senha</label>
             <input type="password" id="txtSen" name="txtSen" class="form-control" placeholder="Senha">
+            <input type="checkbox" id="showPass" name="showPass" class="form-check-input" onclick="showPassword();">
+            <label for="showPass">Mostrar Senha</label>
         </div>
     </div>
 
@@ -33,5 +35,5 @@
         </div>
     </div>
 </form>
-<script src="{{BASE}}js/generos.js"></script>
+<script src="{{BASE}}js/login.js"></script>
 {% endblock %}

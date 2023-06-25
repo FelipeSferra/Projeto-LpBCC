@@ -160,9 +160,18 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{BASE}}about/">Sobre</a>
                     </li>
+                    {% if USER is not null %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false">{{USER}}</a>
+                        <div class="dropdown-menu">
+                            <a href="{{BASE}}login/sair" class="dropdown-item" role="button">Sair</a>
+                        </div>
+                    </li>
+                    {% else %}
                     <li class="nav-item">
                         <a href="{{BASE}}login/" class="nav-link">Entrar</a>
                     </li>
+                    {% endif %}
                 </ul>
                 <form class="d-flex" method="get" action="{{BASE}}pesquisa/" id="frmPesquisa">
                     <input class="form-control me-sm-2" name="txtPesquisa" id="txtPesquisa" type="search" placeholder="Pesquisar" minlength="2" onsubmit="return pesquisar();">

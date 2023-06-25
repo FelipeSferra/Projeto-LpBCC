@@ -11,6 +11,6 @@
 
 <hr>
 
-<a href="{{BASE}}{{link}}" class="btn btn-success me-md-2">Ok</a>
+<a href="{{BASE}}" class="btn btn-success me-md-2">Ok</a>
 
 {% endblock %}
