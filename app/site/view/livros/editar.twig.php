@@ -24,17 +24,13 @@
             <label for="txtTitulo">Título</label>
             <input type="text" id="txtTitulo" name="txtTitulo" class="form-control" placeholder="Título Aqui" value="{{livro.titulo}}">
         </div>
-        <div class="col-md-3 mt-3">
+        <div class="col-md-6 mt-3">
             <label for="slStatus">Status</label>
             <select id="slStatus" name="slStatus" class="form-select">
                 <option value="Disponivel" {{ livro.status == "Disponivel" ? "selected" : "" }}>Disponível</option>
                 <option value="Emprestado" {{livro.status == "Emprestado" ? "selected" : "" }}>Emprestado</option>
                 <option value="Atrasado" {{livro.status == "Atrasado" ? "selected" : "" }}>Atrasado</option>
             </select>
-        </div>
-        <div class="col-md-3 mt-3">
-            <label for="nmQtde">Quantidade</label>
-            <input type="number" id="nmQtde" name="nmQtde" class="form-control" placeholder="Quantidade em estoque" value="{{livro.qtde}}">
         </div>
     </div>
 

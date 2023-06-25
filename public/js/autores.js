@@ -21,22 +21,3 @@ function validar(validateId) {
 
   return valid;
 }
-
-$("#submitEditarAutor").on("click", function (e) {
-  e.preventDefault();
-
-  Swal.fire({
-    title: "Você quer salvar as alterações?",
-    showDenyButton: true,
-    showCancelButton: true,
-    confirmButtonText: "Salvar",
-    denyButtonText: `Descartar`,
-  }).then((result) => {
-    /* Read more about isConfirmed, isDenied below */
-    if (result.isConfirmed) {
-      $("#frmEditarAutor").submit();
-    } else if (result.isDenied) {
-      Swal.fire("Alterações descartadas!", "", "info");
-    }
-  });
-});

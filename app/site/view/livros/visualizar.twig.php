@@ -34,9 +34,11 @@
             <div class="text-end">
                 <p>{{livro.sinopse}}</p>
             </div>
+            {% if USER is not null %}
             <div class="text-end">
-                <a href="{{BASE}}livros/excluir/{{livroId}}" class="btn btn-outline-info btn-md"><i class="fa-solid fa-book"></i> Emprestar o livro</a>
+                <a href="{{BASE}}livros/" class="btn btn-outline-info btn-md"><i class="fa-solid fa-book"></i> Emprestar o livro</a>
             </div>
+            {% endif %}
         </div>
     </div>
 </div>

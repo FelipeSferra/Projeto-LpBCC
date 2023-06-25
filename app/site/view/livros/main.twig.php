@@ -25,7 +25,6 @@
                 <th>Titulo</th>
                 <th>Slug</th>
                 <th>Status</th>
-                <th>QTDE</th>
                 <th></th>
             </tr>
         </thead>
@@ -36,7 +35,6 @@
                 <td>{{livro.titulo}}</td>
                 <td>{{livro.slug}}</td>
                 <td>{{livro.status}}</td>
-                <td>{{livro.qtde}}</td>
                 <td>
                     <div class="text-end">
                         <a href="{{BASE}}livros/visualizar/{{livro.slug}}" class="btn btn-info btn-sm me-md-2"><i class="fa-solid fa-magnifying-glass"></i> Visualizar</a>

@@ -9,7 +9,6 @@ class Livro {
     private $sinopse;
     private $thumb;
     private $status;
-    private $qtde;
     private $generoId;
     private $genero;
     private $autorId;
@@ -39,10 +38,6 @@ class Livro {
 
     public function setStatus($status) {
         $this->status = $status;
-    }
-
-    public function setQtde($qtde) {
-        $this->qtde = $qtde;
     }
 
     public function setGeneroId($generoId){
@@ -91,10 +86,6 @@ class Livro {
 
     public function getStatus(){
         return $this->status;
-    }
-
-    public function getQtde(){
-        return $this->qtde;
     }
 
     public function getGeneroId(){
