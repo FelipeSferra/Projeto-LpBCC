@@ -28,8 +28,12 @@ class LoginController extends Controller{
             $username = $_POST["username"];
             $password = $_POST["password"];
 
+            trim($username);
+            trim($password);
+
+
             $bUser = $this->loginModel->readByUser($username);
-            if ($username && $password == $bUser->senha) {
+            if ($username && md5($password) == $bUser->senha) {
               
               $this->showConfirm("Login Realizado com sucesso", "Redirecionando para a página principal",
                 "home/main");
@@ -46,6 +50,10 @@ public function inserir() {
     $user = filter_input(INPUT_POST, "txtUser", FILTER_UNSAFE_RAW);
     $pass = filter_input(INPUT_POST, "txtSen", FILTER_UNSAFE_RAW);
 
+    trim($user);
+    trim($pass);
+
+
     if (strlen($user) < 2 || strlen($pass) < 2) {
         $this->showMessage(
             "Formulário Inválido",
@@ -54,8 +62,8 @@ public function inserir() {
         );
         return;
     }
-
-    $result = $this->loginModel->insert($user, $pass);
+    
+    $result = $this->loginModel->insert($user, md5($pass));
 
     if ($result <= 0) {
         $this->showMessage(
