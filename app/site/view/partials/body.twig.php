@@ -160,6 +160,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{BASE}}about/">Sobre</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{BASE}}login/" class="nav-link">Entrar</a>
+                    </li>
                 </ul>
                 <form class="d-flex" method="get" action="{{BASE}}pesquisa/" id="frmPesquisa">
                     <input class="form-control me-sm-2" name="txtPesquisa" id="txtPesquisa" type="search" placeholder="Pesquisar" minlength="2" onsubmit="return pesquisar();">

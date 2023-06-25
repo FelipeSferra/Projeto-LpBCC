@@ -1,6 +1,6 @@
 {% extends "partials/body.twig.php" %}
 
-{% block title %}Teste - Realizar login{% endblock %}
+{% block title %}Brisa Livros - Realizar login{% endblock %}
 
 {% block body %}
 <br>
@@ -11,14 +11,19 @@
 <form action="{{BASE}}login/logar" onsubmit="return validar(false);" method="post">
     <div class="row">
         <div class="col-md-6 mt-3">
-                <label for="username">Usuário:</label>
-                <input type="text" id="username" name="username" required><br><br>
+            <label for="username">Usuário: </label>
+            <input type="text" class="form-control" id="username" name="username" required><br><br>
         </div>
-        <div class="col-md-3 mt-3">
-                <label for="password">Senha:</label>
-                <input type="password" id="password" name="password" required><br><br>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mt-3">
+            <label for="password">Senha: </label>
+            <input type="password" class="form-control" id="password" name="password" required><br><br>
         </div>
-        
+    </div>
+    <div class="row">
+        <p>Ainda não tem conta? <a href="{{BASE}}login/adicionar" class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Cadastre-se</a></p>
     </div>
 
     <div class="row mt-4">
