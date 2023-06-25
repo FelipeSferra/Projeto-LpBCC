@@ -1,6 +1,6 @@
 {% extends "partials/body.twig.php" %}
 
-{% block title %}Teste - Editar Autor{% endblock %}
+{% block title %}Brisa Livros - Editar Autor{% endblock %}
 
 {% block body %}
 <br>

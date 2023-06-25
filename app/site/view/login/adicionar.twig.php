@@ -1,18 +1,20 @@
 {% extends "partials/body.twig.php" %}
 
-{% block title %}Brisa Livros - Novo Gênero{% endblock %}
+{% block title %}Teste - Cadastrar Login{% endblock %}
 
 {% block body %}
 <br>
-<h1>Novo Gênero</h1>
+<h1>Cadastrar Login</h1>
 
 <hr>
 
-<form action="{{BASE}}generos/inserir" onsubmit="return validar(false);" method="post">
+<form action="{{BASE}}login/inserir" onsubmit="return validar(false);" method="post">
     <div class="row">
         <div class="col-md-12 mt-3">
-            <label for="txtGen">Gênero</label>
-            <input type="text" id="txtGen" name="txtGen" class="form-control" placeholder="Gênero Aqui">
+            <label for="txtGen">Usuário</label>
+            <input type="text" id="txtUser" name="txtUser" class="form-control" placeholder="Usuário">
+            <label for="txtGen">Senha</label>
+            <input type="text" id="txtSen" name="txtSen" class="form-control" placeholder="Senha">
         </div>
     </div>
     <div class="row mt-4">

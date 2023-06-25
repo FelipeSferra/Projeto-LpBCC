@@ -1,6 +1,6 @@
 {% extends "partials/body.twig.php" %}
 
-{% block title %} Autores - Projeto {% endblock %}
+{% block title %} Brisa Livros - Autores {% endblock %}
 
 {% block body %}
 <br>

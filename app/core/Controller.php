@@ -22,6 +22,15 @@ class Controller {
         ]);
     }
 
+    protected function showConfirm(string $title, string $message, string $uri, int $httpCode = 200){
+        http_response_code($httpCode);
+        $this->load("partials/confirm",[
+            "title" => $title,
+            "message" => $message,
+            "link" => $uri
+        ]);
+    }
+
     protected function createSlug($titulo){
         $slug = new \Cocur\Slugify\Slugify();
 

@@ -1,6 +1,6 @@
 {% extends "partials/body.twig.php" %}
 
-{% block title %} {{title}} - Projeto {% endblock %}
+{% block title %}Brisa Livros - {{title}}{% endblock %}
 
 {% block body %}
 <br><h1>{{title}}</h1>
