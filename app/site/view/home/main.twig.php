@@ -8,7 +8,7 @@
 <hr>
 <div class="row mt-4">
     {% for livro in listaLivros %}
-    <div class="col-md-4">
+    <div class="col-md-3">
         <div class="card border-primary mb-2" style="max-width: 20rem;">
             <div class="card-body">
                 <img src="{{livro.thumb}}" alt="{{livro.slug}}" class="w-100 img-thumb">

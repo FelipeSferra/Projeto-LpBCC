@@ -34,7 +34,7 @@
             <div class="text-end">
                 <p>{{livro.sinopse}}</p>
             </div>
-            {% if USER is not null and livro.stats == "Disponivel" %}
+            {% if USER is not null and livro.status == "Disponivel" %}
             <div class="text-end">
                 <a href="{{BASE}}pedidos/adicionar/{{livro.id}}" class="btn btn-outline-info btn-md"><i class="fa-solid fa-book"></i> Emprestar o livro</a>
             </div>
