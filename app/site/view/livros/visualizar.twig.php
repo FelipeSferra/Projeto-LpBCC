@@ -34,9 +34,16 @@
             <div class="text-end">
                 <p>{{livro.sinopse}}</p>
             </div>
-            {% if USER is not null %}
+            {% if USER is not null and livro.stats == "Disponivel" %}
             <div class="text-end">
-                <a href="{{BASE}}livros/" class="btn btn-outline-info btn-md"><i class="fa-solid fa-book"></i> Emprestar o livro</a>
+                <a href="{{BASE}}pedidos/adicionar/{{livro.id}}" class="btn btn-outline-info btn-md"><i class="fa-solid fa-book"></i> Emprestar o livro</a>
+            </div>
+            {% else %}
+            <div class="text-end">
+                <button type="button" class="btn btn-outline-info btn-md" disabled><i class="fa-solid fa-book"></i> Emprestar o livro</button>
+                <div class="alert alert-danger mt-3 col-md-6 offset-md-6">
+                    O livro está indisponível no momento!
+                </div>
             </div>
             {% endif %}
         </div>

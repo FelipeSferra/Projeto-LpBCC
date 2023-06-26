@@ -13,14 +13,15 @@ class LivroModel {
     }
 
     public function insert(Livro $livro) {
-        $sql = "INSERT INTO livro (TITULO,SLUG,SINOPSE,THUMB,STATUS,GENERO_ID,AUTOR_ID,EDITORA_ID) ";
-        $sql .= " VALUES (:titulo, :slug, :sinopse, :thumb, :status, :generoId, :autorId, :editoraId)";
+        $sql = "INSERT INTO livro (TITULO,SLUG,SINOPSE,THUMB,STATUS,QTDE,GENERO_ID,AUTOR_ID,EDITORA_ID) ";
+        $sql .= " VALUES (:titulo, :slug, :sinopse, :thumb, :status, :qtde, :generoId, :autorId, :editoraId)";
         $params = [
             ":titulo" => $livro->getTitulo(),
             ":slug" => $livro->getSlug(),
             ":sinopse" => $livro->getSinopse(),
             ":thumb" => $livro->getThumb(),
             ":status" => $livro->getStatus(),
+            ":qtde" => $livro->getQtde(),
             ":generoId" => $livro->getGeneroId(),
             ":autorId" => $livro->getAutorId(),
             ":editoraId" => $livro->getEditoraId()
@@ -32,7 +33,7 @@ class LivroModel {
     }
 
     public function update(Livro $livro) {
-        $sql = "UPDATE livro SET titulo = :titulo, slug = :slug, sinopse = :sinopse, thumb = :thumb, status = :status, genero_id = :generoId, ";
+        $sql = "UPDATE livro SET titulo = :titulo, slug = :slug, sinopse = :sinopse, thumb = :thumb, status = :status, qtde = :qtde, genero_id = :generoId, ";
         $sql .= " autor_id = :autorId, editora_id = :editoraId WHERE id = :id";
         $params = [
             ":id" => $livro->getId(),
@@ -41,6 +42,7 @@ class LivroModel {
             ":sinopse" => $livro->getSinopse(),
             ":thumb" => $livro->getThumb(),
             ":status" => $livro->getStatus(),
+            ":qtde" => $livro->getQtde(),
             ":generoId" => $livro->getGeneroId(),
             ":autorId" => $livro->getAutorId(),
             ":editoraId" => $livro->getEditoraId()
@@ -49,7 +51,7 @@ class LivroModel {
         return $this->pdo->executeNonQuery($sql, $params);
     }
 
-    public function delete(Livro $livro){
+    public function delete(Livro $livro) {
         $sql = "UPDATE livro SET D_E_L_E_T_E = '*' WHERE id = :id";
         $params = [
             ":id" => $livro->getId()
@@ -86,7 +88,7 @@ class LivroModel {
 
         $lista = [];
 
-        foreach($dt as $dr){
+        foreach ($dt as $dr) {
             $lista[] = $this->collection($dr);
         }
 
@@ -100,7 +102,7 @@ class LivroModel {
 
         $lista = [];
 
-        foreach($dt as $dr){
+        foreach ($dt as $dr) {
             $lista[] = $this->collection($dr);
         }
 
@@ -116,7 +118,7 @@ class LivroModel {
 
         $lista = [];
 
-        foreach($dt as $dr){
+        foreach ($dt as $dr) {
             $lista[] = $this->collection($dr);
         }
 
@@ -132,7 +134,7 @@ class LivroModel {
 
         $lista = [];
 
-        foreach($dt as $dr){
+        foreach ($dt as $dr) {
             $lista[] = $this->collection($dr);
         }
 
@@ -147,6 +149,7 @@ class LivroModel {
         $livro->setSinopse($arr["SINOPSE"] ?? null);
         $livro->setThumb($arr["THUMB"] ?? null);
         $livro->setStatus($arr["STATUS"] ?? null);
+        $livro->setQtde($arr["QTDE"] ?? null);
         $livro->setGeneroId($arr["GENERO_ID"] ?? null);
         $livro->setGenero($arr["genDesc"] ?? null);
         $livro->setAutorId($arr["AUTOR_ID"] ?? null);

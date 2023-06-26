@@ -9,6 +9,7 @@ class Livro {
     private $sinopse;
     private $thumb;
     private $status;
+    private $qtde;
     private $generoId;
     private $genero;
     private $autorId;
@@ -40,76 +41,83 @@ class Livro {
         $this->status = $status;
     }
 
-    public function setGeneroId($generoId){
+    public function setQtde($qtde) {
+        $this->qtde = $qtde;
+    }
+
+    public function setGeneroId($generoId) {
         $this->generoId = $generoId;
     }
 
-    public function setGenero($genero){
+    public function setGenero($genero) {
         $this->genero = $genero;
     }
 
-    public function setAutorId($autorId){
+    public function setAutorId($autorId) {
         $this->autorId = $autorId;
     }
 
-    public function setAutor($autor){
+    public function setAutor($autor) {
         $this->autor = $autor;
     }
 
-    public function setEditoraId($editoraId){
+    public function setEditoraId($editoraId) {
         $this->editoraId = $editoraId;
     }
 
-    public function setEditora($editora){
+    public function setEditora($editora) {
         $this->editora = $editora;
     }
 
-    public function getId(){
+    public function getId() {
         return $this->id;
     }
 
-    public function getTitulo(){
+    public function getTitulo() {
         return $this->titulo;
     }
 
-    public function getSlug(){
+    public function getSlug() {
         return $this->slug;
     }
 
-    public function getSinopse(){
+    public function getSinopse() {
         return $this->sinopse;
     }
 
-    public function getThumb(){
+    public function getThumb() {
         return $this->thumb;
     }
 
-    public function getStatus(){
+    public function getStatus() {
         return $this->status;
     }
 
-    public function getGeneroId(){
+    public function getQtde(){
+        return $this->qtde;
+    }
+
+    public function getGeneroId() {
         return $this->generoId;
     }
 
-    public function getGenero(){
+    public function getGenero() {
         return $this->genero;
     }
 
-    public function getAutorId(){
+    public function getAutorId() {
         return $this->autorId;
     }
 
-    public function getAutor(){
+    public function getAutor() {
         return $this->autor;
     }
 
-    public function getEditoraId(){
+    public function getEditoraId() {
         return $this->editoraId;
     }
 
-    public function getEditora(){
+    public function getEditora() {
         return $this->editora;
     }
 }
-

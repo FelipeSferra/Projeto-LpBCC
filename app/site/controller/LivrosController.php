@@ -169,6 +169,9 @@ class LivrosController extends Controller {
         if ($livro->getEditoraId() <= 0)
             return false;
 
+        if ($livro->getQtde() < 0)
+            return false;
+
         if ($livro->getGeneroId() <= 0)
             return false;
 
@@ -188,6 +191,7 @@ class LivrosController extends Controller {
         $livro->setSinopse(filter_input(INPUT_POST, "txtSinopse", FILTER_SANITIZE_SPECIAL_CHARS));
         $livro->setThumb(filter_input(INPUT_POST, "txtThumb", FILTER_UNSAFE_RAW));
         $livro->setStatus(filter_input(INPUT_POST, "slStatus", FILTER_UNSAFE_RAW));
+        $livro->setQtde(filter_input(INPUT_POST, "nmQtde", FILTER_SANITIZE_NUMBER_INT));
         $livro->setGeneroId(filter_input(INPUT_POST, "slGenero", FILTER_SANITIZE_NUMBER_INT));
         $livro->setAutorId(filter_input(INPUT_POST, "slAutor", FILTER_SANITIZE_NUMBER_INT));
         $livro->setEditoraId(filter_input(INPUT_POST, "slEditora", FILTER_SANITIZE_NUMBER_INT));
