@@ -18,14 +18,13 @@ function searchCEP($cep) {
     return $xml;
 }
 
-function getCurrentDate($format = 'Y-m-d')
-{
+function getCurrentDate($format = 'Y-m-d') {
     date_default_timezone_set('America/Sao_Paulo');
     return date($format);
 }
 
-function addDays($dataEmp, $format = 'Y-m-d'){
-    $data= DateTime::createFromFormat($format,$dataEmp);
+function addDays($dataEmp, $format = 'Y-m-d') {
+    $data = DateTime::createFromFormat($format, $dataEmp);
     $data->add(new DateInterval('P5D'));
     return $data->format($format);
 }

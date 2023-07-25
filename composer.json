@@ -1,26 +1,26 @@
 {
-    "name": "felipe/projeto_lpbcc",
-    "authors": [
-        {
-            "name": "Felipe Sferra",
-            "email": "felipesferra@gmail.com"
-        },
-        {
-            "name": "Lucas Cunha",
-            "email": "lucascunhafelicio@hotmail.com"
-        }
-    ],
-    "require": {
-        "twig/twig": "3.6.1",
-        "cocur/slugify": "^4.3"
+  "name": "felipe/projeto_lpbcc",
+  "authors": [
+    {
+      "name": "Felipe Sferra",
+      "email": "felipesferra@gmail.com"
     },
-    "autoload": {
-        "psr-4": {
-            "app\\": "app/"
-        },
-        "files": [
-            "app\\config\\global.php",
-            "app\\functions\\functions.php"
-        ]
+    {
+      "name": "Lucas Cunha",
+      "email": "lucascunhafelicio@hotmail.com"
     }
+  ],
+  "require": {
+    "twig/twig": "3.6.1",
+    "cocur/slugify": "^4.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "app\\": "app/"
+    },
+    "files": [
+      "app\\config\\global.php",
+      "app\\functions\\functions.php"
+    ]
+  }
 }

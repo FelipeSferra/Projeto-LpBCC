@@ -14,9 +14,7 @@ class AutoresController extends Controller {
     }
 
     public function index() {
-        $this->load("autores/main", [
-            "listaAutor" => $this->autorModel->readAll()
-        ]);
+        $this->load("autores/main", ["listaAutor" => $this->autorModel->readAll()]);
     }
 
     public function adicionar() {
@@ -27,49 +25,31 @@ class AutoresController extends Controller {
         $autorId = filter_var($autorId, FILTER_SANITIZE_NUMBER_INT);
 
         if ($autorId <= 0) {
-            $this->showMessage(
-                "Formulário Inválido",
-                "Os dados fornecidos estão incompletos ou são inválidos!",
-                "autores/"
-            );
+            $this->showMessage("Formulário Inválido", "Os dados fornecidos estão incompletos ou são inválidos!", "autores/");
             return;
         }
 
         $autor = $this->autorModel->readById($autorId);
-        
+
         if ($autor->nome == null) {
-            $this->showMessage(
-                "Autor não encontrado",
-                "Os dados fornecidos estão incompletos ou são inválidos!",
-                "autores/"
-            );
+            $this->showMessage("Autor não encontrado", "Os dados fornecidos estão incompletos ou são inválidos!", "autores/");
             return;
         }
 
-        $this->load("autores/editar", [
-            "autor" => $autor,
-            "autorId" => $autorId
-        ]);
+        $this->load("autores/editar", ["autor" => $autor, "autorId" => $autorId]);
     }
 
-    public function visualizar($autorId = 0){
+    public function visualizar($autorId = 0) {
         $autorId = filter_var($autorId, FILTER_SANITIZE_NUMBER_INT);
 
         $autor = $this->autorModel->readById($autorId);
 
         if ($autor->nome == null) {
-            $this->showMessage(
-                "Autor não encontrado",
-                "Os dados fornecidos estão incompletos ou são inválidos!",
-                "autores/"
-            );
+            $this->showMessage("Autor não encontrado", "Os dados fornecidos estão incompletos ou são inválidos!", "autores/");
             return;
         }
 
-        $this->load("autores/visualizar", [
-            "autor" => $autor,
-            "autorId" => $autorId
-        ]);
+        $this->load("autores/visualizar", ["autor" => $autor, "autorId" => $autorId]);
     }
 
     //----------------------------------------------------//
@@ -78,22 +58,14 @@ class AutoresController extends Controller {
         $autor = filter_input(INPUT_POST, "txtAut", FILTER_UNSAFE_RAW);
 
         if (strlen($autor) < 2) {
-            $this->showMessage(
-                "Formulário Inválido",
-                "Os dados fornecidos estão incompletos ou são inválidos!",
-                "autores/adicionar"
-            );
+            $this->showMessage("Formulário Inválido", "Os dados fornecidos estão incompletos ou são inválidos!", "autores/adicionar");
             return;
         }
 
         $result = $this->autorModel->insert($autor);
 
         if ($result <= 0) {
-            $this->showMessage(
-                "Erro",
-                "Houve um erro ao tentar cadastrar, tente novamente mais tarde!",
-                "autores/adicionar"
-            );
+            $this->showMessage("Erro", "Houve um erro ao tentar cadastrar, tente novamente mais tarde!", "autores/adicionar");
             return;
         }
 
@@ -105,35 +77,23 @@ class AutoresController extends Controller {
         $autor = filter_input(INPUT_POST, "txtAut", FILTER_UNSAFE_RAW);
 
         if ($autorId <= 0 || strlen($autor) < 2) {
-            $this->showMessage(
-                "Formulário Inválido",
-                "Os dados fornecidos estão incompletos ou são inválidos!",
-                "autores/"
-            );
+            $this->showMessage("Formulário Inválido", "Os dados fornecidos estão incompletos ou são inválidos!", "autores/");
             return;
         }
 
         if (!$this->autorModel->update($autorId, $autor)) {
-            $this->showMessage(
-                "Erro",
-                "Houve um erro ao tentar alterar, tente novamente mais tarde!",
-                "autores/"
-            );
+            $this->showMessage("Erro", "Houve um erro ao tentar alterar, tente novamente mais tarde!", "autores/");
             return;
         }
 
         redirect(BASE . "autores/");
     }
 
-    public function excluir($autorId){
+    public function excluir($autorId) {
         $autorId = filter_var($autorId, FILTER_SANITIZE_NUMBER_INT);
 
         if (!$this->autorModel->delete($autorId)) {
-            $this->showMessage(
-                "Erro",
-                "Houve um erro ao tentar alterar, tente novamente mais tarde!",
-                "autores/"
-            );
+            $this->showMessage("Erro", "Houve um erro ao tentar alterar, tente novamente mais tarde!", "autores/");
             return;
         }
 
